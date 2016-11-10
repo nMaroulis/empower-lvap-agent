@@ -88,7 +88,10 @@ CheckTCPHeader::simple_action(Packet *p)
   const click_ip *iph = p->ip_header();
   const click_tcp *tcph = p->tcp_header();
   unsigned len, iph_len, tcph_len, csum;
-
+  click_chatter("%{element} :: %s :: TCP HeadeR %s ",
+                this,
+                __func__,
+                (unsigned char *)tcph);
   if (!p->has_network_header() || iph->ip_p != IP_PROTO_TCP)
     return drop(NOT_TCP, p);
 
