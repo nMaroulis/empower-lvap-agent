@@ -270,6 +270,7 @@ public:
 	int handle_lvap_stats_request(Packet *, uint32_t);
 
 	void send_hello();
+	void send_hello_loki();
 	void send_probe_request(EtherAddress, String, uint8_t);
 	void send_auth_request(EtherAddress, EtherAddress);
 	void send_association_request(EtherAddress, EtherAddress, String);

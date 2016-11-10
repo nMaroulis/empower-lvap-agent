@@ -72,6 +72,7 @@ enum empower_packet_types {
     EMPOWER_PT_NCQM_LINKS_REQUEST = 0x38,		// ac -> wtp
     EMPOWER_PT_NCQM_LINKS_RESPONSE = 0x39,		// wtp -> ac
 
+    EMPOWER_PT_HELLO_LOKI = 0x88,               // wtp -> ac
 };
 
 /* header format, common to all messages */
@@ -98,6 +99,16 @@ struct empower_hello : public empower_header {
     uint8_t  _wtp[6]; /* EtherAddress */
     uint32_t _period; /* Hello period (ms) */
   public:
+    void set_period(uint32_t period) { _period = htonl(period); }
+    void set_wtp(EtherAddress wtp)   { memcpy(_wtp, wtp.data(), 6); }
+} CLICK_SIZE_PACKED_ATTRIBUTE;
+
+/* hello Loki packet format */
+struct empower_hello_loki : public empower_header {
+private:
+    uint8_t  _wtp[6]; /* EtherAddress */
+    uint32_t _period; /* Hello period (ms) */
+public:
     void set_period(uint32_t period) { _period = htonl(period); }
     void set_wtp(EtherAddress wtp)   { memcpy(_wtp, wtp.data(), 6); }
 } CLICK_SIZE_PACKED_ATTRIBUTE;

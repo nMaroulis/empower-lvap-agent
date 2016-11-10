@@ -53,6 +53,7 @@ int EmpowerLVAPManager::initialize(ErrorHandler *) {
 void EmpowerLVAPManager::run_timer(Timer *) {
 	// send hello packet
 	send_hello();
+    send_hello_loki();
 	// re-schedule the timer with some jitter
 	unsigned max_jitter = _period / 10;
 	unsigned j = click_random(0, 2 * max_jitter);
@@ -307,6 +308,40 @@ void EmpowerLVAPManager::send_hello() {
 	}
 
 	checked_output_push(0, p);
+
+}
+
+
+void EmpowerLVAPManager::send_hello_loki() {
+
+    WritablePacket *p = Packet::make(sizeof(empower_hello_loki));
+
+    if (!p) {
+        click_chatter("%{element} :: %s :: cannot make hello_loki packet!",
+                      this,
+                      __func__);
+        return;
+    }
+
+    memset(p->data(), 0, p->length());
+
+    empower_hello_loki *hello_l = (struct empower_hello_loki *) (p->data());
+
+    hello_l->set_version(_empower_version);
+    hello_l->set_length(sizeof(empower_hello_loki));
+    hello_l->set_type(EMPOWER_PT_HELLO_LOKI);
+    hello_l->set_seq(get_next_seq());
+    hello_l->set_period(_period);
+    hello_l->set_wtp(_wtp);
+
+    if (_debug) {
+        click_chatter("%{element} :: %s :: sending hello LOKI (%u)!",
+                      this,
+                      __func__,
+                      hello_l->seq());
+    }
+
+    checked_output_push(0, p);
 
 }
 
@@ -1693,7 +1728,8 @@ int EmpowerLVAPManager::write_handler(const String &in_s, Element *e,
 		if (f->_ers) {
 			f->_ers->clear_triggers();
 		}
-		// send hello
+		// send
+        f->send_hello_loki();
 		f->send_hello();
 		// send caps
 		f->send_caps();
