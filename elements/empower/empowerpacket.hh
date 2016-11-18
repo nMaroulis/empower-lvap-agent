@@ -72,7 +72,11 @@ enum empower_packet_types {
     EMPOWER_PT_NCQM_LINKS_REQUEST = 0x38,		// ac -> wtp
     EMPOWER_PT_NCQM_LINKS_RESPONSE = 0x39,		// wtp -> ac
 
-    EMPOWER_PT_HELLO_LOKI = 0x88,               // wtp -> ac
+    // Test Hello Loki and DRP Triggers
+    EMPOWER_PT_HELLO_LOKI = 0x88,           // wtp -> ac
+    EMPOWER_PT_ADD_DRP_TRIGGER = 0x78, 		// ac -> wtp
+    EMPOWER_PT_DRP_TRIGGER = 0x80,     		// ac -> wtp
+    EMPOWER_PT_DEL_DRP_TRIGGER = 0x79, 		// ac -> wtp
 };
 
 /* header format, common to all messages */
@@ -99,16 +103,6 @@ struct empower_hello : public empower_header {
     uint8_t  _wtp[6]; /* EtherAddress */
     uint32_t _period; /* Hello period (ms) */
   public:
-    void set_period(uint32_t period) { _period = htonl(period); }
-    void set_wtp(EtherAddress wtp)   { memcpy(_wtp, wtp.data(), 6); }
-} CLICK_SIZE_PACKED_ATTRIBUTE;
-
-/* hello Loki packet format */
-struct empower_hello_loki : public empower_header {
-private:
-    uint8_t  _wtp[6]; /* EtherAddress */
-    uint32_t _period; /* Hello period (ms) */
-public:
     void set_period(uint32_t period) { _period = htonl(period); }
     void set_wtp(EtherAddress wtp)   { memcpy(_wtp, wtp.data(), 6); }
 } CLICK_SIZE_PACKED_ATTRIBUTE;
@@ -639,6 +633,53 @@ public:
     void set_ssid(String ssid)             { memcpy(&_ssid, ssid.data(), ssid.length()); }
 } CLICK_SIZE_PACKED_ATTRIBUTE;
 
+/* ------------------------ DRP trigger packet format -----------------------------*/
+struct empower_drp_trigger: public empower_header {
+private:
+    uint32_t _trigger_id; 	/* Module id (int) */
+    uint8_t  _wtp[6];		/* EtherAddress */
+    uint8_t  _hwaddr[6];	/* EtherAddress */
+    uint8_t  _channel;		/* WiFi channel (int) */
+    uint8_t  _band;			/* WiFi band (empower_band_types) */
+public:
+    void set_wtp(EtherAddress wtp)          { memcpy(_wtp, wtp.data(), 6); }
+    void set_band(uint8_t band)             { _band = band; }
+    void set_channel(uint8_t channel)       { _channel = channel; }
+    void set_hwaddr(EtherAddress hwaddr)    { memcpy(_hwaddr, hwaddr.data(), 6); }
+    void set_trigger_id(int32_t trigger_id) { _trigger_id = htonl(trigger_id); }
+} CLICK_SIZE_PACKED_ATTRIBUTE;
+
+/* add DRP trigger packet format */
+struct empower_add_drp_trigger: public empower_header {
+private:
+    uint32_t _trigger_id;	/* Module id (int) */
+    uint8_t  _wtp[6];		/* EtherAddress */
+    uint8_t  _hwaddr[6];	/* EtherAddress */
+public:
+    uint32_t trigger_id() { return ntohl(_trigger_id); }
+    EtherAddress wtp()    { return EtherAddress(_wtp); }
+    EtherAddress hwaddr()    { return EtherAddress(_hwaddr); }
+} CLICK_SIZE_PACKED_ATTRIBUTE;
+
+/* del DRP trigger packet format */
+struct empower_del_drp_trigger: public empower_header {
+private:
+    uint32_t _trigger_id; /* Module id (int) */
+public:
+    uint32_t trigger_id() { return ntohl(_trigger_id); }
+} CLICK_SIZE_PACKED_ATTRIBUTE;
+
+
+/* hello Loki packet format */
+struct empower_hello_loki : public empower_header {
+private:
+    uint8_t  _wtp[6]; /* EtherAddress */
+    uint32_t _period; /* Hello period (ms) */
+public:
+    void set_period(uint32_t period) { _period = htonl(period); }
+    void set_wtp(EtherAddress wtp)   { memcpy(_wtp, wtp.data(), 6); }
+} CLICK_SIZE_PACKED_ATTRIBUTE;
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 CLICK_ENDDECLS
 #endif /* CLICK_EMPOWERPACKET_HH */

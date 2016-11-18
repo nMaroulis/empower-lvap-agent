@@ -11,6 +11,7 @@
 #include <click/sync.hh>
 #include "summary_trigger.hh"
 #include "rssi_trigger.hh"
+#include "drp_trigger.hh"
 #include "dstinfo.hh"
 #include "cqmlink.hh"
 #include "empowerpacket.hh"
@@ -85,6 +86,7 @@ public:
 
 	void add_summary_trigger(int, EtherAddress, uint32_t, int16_t, uint16_t);
 	void del_summary_trigger(uint32_t);
+
 
 	void clear_triggers();
 

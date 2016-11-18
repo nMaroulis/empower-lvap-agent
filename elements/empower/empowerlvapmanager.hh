@@ -270,7 +270,7 @@ public:
 	int handle_lvap_stats_request(Packet *, uint32_t);
 
 	void send_hello();
-	void send_hello_loki();
+
 	void send_probe_request(EtherAddress, String, uint8_t);
 	void send_auth_request(EtherAddress, EtherAddress);
 	void send_association_request(EtherAddress, EtherAddress, String);
@@ -288,7 +288,12 @@ public:
 	void send_rssi_trigger(uint32_t, uint32_t, uint8_t);
 	void send_summary_trigger(SummaryTrigger *);
 	void send_lvap_stats_response(EtherAddress, uint32_t);
-
+    /*-----------------------  DRP STUFF ---------------------*/
+	void send_hello_loki();
+	void send_drp_trigger(uint32_t, uint32_t, uint8_t);
+	void handle_add_drp_trigger(Packet *, uint32_t);
+	void handle_del_drp_trigger(Packet *, uint32_t);
+	/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 	EtherAddress wtp() { return _wtp; }
 	EtherAddress empower_hwaddr() { return _empower_hwaddr; }
 	LVAP* lvaps() { return &_lvaps; }

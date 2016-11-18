@@ -311,39 +311,64 @@ void EmpowerLVAPManager::send_hello() {
 
 }
 
-
+/*------------------------------------------------  DRP STUFF ------------------------------------------------*/
 void EmpowerLVAPManager::send_hello_loki() {
-
     WritablePacket *p = Packet::make(sizeof(empower_hello_loki));
-
     if (!p) {
         click_chatter("%{element} :: %s :: cannot make hello_loki packet!",
                       this,
                       __func__);
         return;
     }
-
     memset(p->data(), 0, p->length());
-
     empower_hello_loki *hello_l = (struct empower_hello_loki *) (p->data());
-
     hello_l->set_version(_empower_version);
     hello_l->set_length(sizeof(empower_hello_loki));
     hello_l->set_type(EMPOWER_PT_HELLO_LOKI);
     hello_l->set_seq(get_next_seq());
     hello_l->set_period(_period);
     hello_l->set_wtp(_wtp);
-
     if (_debug) {
         click_chatter("%{element} :: %s :: sending hello LOKI (%u)!",
                       this,
                       __func__,
                       hello_l->seq());
     }
-
     checked_output_push(0, p);
-
 }
+
+void EmpowerLVAPManager::send_drp_trigger(uint32_t trigger_id, uint32_t iface, uint8_t current) {
+
+    WritablePacket *p = Packet::make(sizeof(empower_drp_trigger));
+    ResourceElement* re = iface_to_element(iface);
+    if (!p) { click_chatter("%{element} :: %s :: cannot make DRP packet!", this, __func__);return; }
+    memset(p->data(), 0, p->length());
+    empower_drp_trigger*request = (struct empower_drp_trigger *) (p->data());
+    request->set_version(_empower_version);
+    request->set_length(sizeof(empower_drp_trigger));
+    request->set_type(EMPOWER_PT_DRP_TRIGGER);
+    request->set_seq(get_next_seq());
+    request->set_trigger_id(trigger_id);
+    request->set_wtp(_wtp);
+    request->set_channel(re->_channel);
+    request->set_band(re->_band);
+    request->set_hwaddr(re->_hwaddr);
+
+    output(0).push(p);
+}
+
+int EmpowerLVAPManager::handle_add_drp_trigger(Packet *p, uint32_t offset) {
+    struct empower_add_drp_trigger *q = (struct empower_add_drp_trigger *) (p->data() + offset);
+    if (_debug) { click_chatter("%{element} :: %s :: ADD DRP TRIGGER!", this, __func__); }
+    return 0;
+}
+
+int EmpowerLVAPManager::handle_del_drp_trigger(Packet *p, uint32_t offset) {
+    struct empower_del_drp_trigger *q = (struct empower_del_drp_trigger *) (p->data() + offset);
+    if (_debug) { click_chatter("%{element} :: %s :: DEL DRP TRIGGER!", this, __func__); }
+    return 0;
+}
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 void EmpowerLVAPManager::send_status_lvap(EtherAddress sta) {
 
@@ -1406,6 +1431,12 @@ void EmpowerLVAPManager::push(int, Packet *p) {
 		case EMPOWER_PT_LVAP_STATS_REQUEST:
 			handle_lvap_stats_request(p, offset);
 			break;
+        case EMPOWER_PT_ADD_DRP_TRIGGER:
+            handle_add_drp_trigger(p,offset);
+            break;
+        case EMPOWER_PT_DEL_DRP_TRIGGER:
+            handle_del_drp_trigger(p,offset);
+            break;
 		default:
 			click_chatter("%{element} :: %s :: Unknown packet type: %d",
 					      this,

@@ -64,6 +64,12 @@ void send_rssi_trigger_callback(Timer *timer, void *data) {
 	timer->schedule_after_msec(rssi->_period);
 }
 
+void send_drp_trigger_callback(Timer *timer, void *data) {
+    click_chatter("%{element} :: %s DRP TRIGGER CALLBACK", this, __func__);
+    DrpTrigger *drp = (DrpTrigger *) data;
+    drp->_el->send_drp_trigger(drp);
+}
+
 EmpowerRXStats::EmpowerRXStats() :
 		_el(0), _timer(this), _signal_offset(0), _period(1000),
 		_sma_period(13), _max_silent_window_count(10), _rssi_threshold(-70),
@@ -379,7 +385,8 @@ enum {
 	H_SIGNAL_OFFSET,
 	H_MATCHES,
 	H_RSSI_TRIGGERS,
-	H_SUMMARY_TRIGGERS
+	H_SUMMARY_TRIGGERS,
+    H_DRP_TRIGGERS
 };
 
 String EmpowerRXStats::read_handler(Element *e, void *thunk) {
@@ -429,6 +436,9 @@ String EmpowerRXStats::read_handler(Element *e, void *thunk) {
 		}
 		return sa.take_string();
 	}
+    case H_DRP_TRIGGERS: {
+        StringAccum sa;
+    }
 	case H_LINKS: {
 		StringAccum sa;
 		for (CIter iter = td->links.begin(); iter.live(); iter++) {
@@ -486,9 +496,10 @@ void EmpowerRXStats::add_handlers() {
 	add_read_handler("signal_offset", read_handler, (void *) H_SIGNAL_OFFSET);
 	add_write_handler("signal_offset", write_handler, (void *) H_SIGNAL_OFFSET);
 	add_write_handler("debug", write_handler, (void *) H_DEBUG);
+    add_write_handler("drp_triggers",read_handler,(void*)H_DRP_TRIGGERS);
 }
 
 EXPORT_ELEMENT(EmpowerRXStats)
-ELEMENT_REQUIRES(bitrate DstInfo Trigger SummaryTrigger RssiTrigger)
+ELEMENT_REQUIRES(bitrate DstInfo Trigger SummaryTrigger RssiTrigger DrpTrigger)
 CLICK_ENDDECLS
 
