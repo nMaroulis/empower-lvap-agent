@@ -55,6 +55,10 @@ typedef RssiTriggersList::iterator RTIter;
 typedef Vector<SummaryTrigger *> SummaryTriggersList;
 typedef SummaryTriggersList::iterator DTIter;
 
+/*----------- DRP STUFF ---------------*/
+typedef Vector<DrpTrigger *> DrpTriggersList;
+typedef DrpTriggersList::iterator DRPIter;
+/*- - - - - - - - - - - - - - - - - - -*/
 class EmpowerLVAPManager;
 
 class EmpowerRXStats: public Element {
@@ -87,7 +91,9 @@ public:
 	void add_summary_trigger(int, EtherAddress, uint32_t, int16_t, uint16_t);
 	void del_summary_trigger(uint32_t);
 
-
+	/*----------- DRP ----------*/
+	void add_drp_trigger(EtherAddress,uint32_t,uint16_t);
+	/*- - - - - - - - - - - - - */
 	void clear_triggers();
 
 	ReadWriteLock lock;
@@ -103,7 +109,7 @@ private:
 
 	RssiTriggersList _rssi_triggers;
 	SummaryTriggersList _summary_triggers;
-
+	DrpTriggersList  _drp_triggers;   //meant to be list
 	int _signal_offset;
 	unsigned _period; // in ms
 	unsigned _sma_period;

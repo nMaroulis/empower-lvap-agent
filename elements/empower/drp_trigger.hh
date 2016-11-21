@@ -1,5 +1,5 @@
-#ifndef CLICK_EMPOWERDUMP_HH
-#define CLICK_EMPOWERDUMP_HH
+#ifndef CLICK_EMPOWER_DRP_HH
+#define CLICK_EMPOWER_DRP_HH
 #include <click/straccum.hh>
 #include <click/hashcode.hh>
 #include <click/timer.hh>
@@ -15,12 +15,14 @@ public:
     int _val;
     bool _dispatched;
 
-    DrpTrigger(EmpowerLVAPManager *,EmpowerRXStats *);
+    DrpTrigger(EtherAddress, uint32_t, uint16_t ,bool ,  EmpowerLVAPManager *,EmpowerRXStats *);
     ~DrpTrigger();
-
-    bool matches(const DstInfo* nfo);
+    String unparse();
+    inline bool operator==(const DrpTrigger &b) {
+        return  (_eth == b._eth) && (_val == b._val);
+    }
 
 };
 
 CLICK_ENDDECLS
-#endif /* CLICK_EMPOWER_DUMP_HH */
+#endif /* CLICK_EMPOWER_DRP_HH */

@@ -655,10 +655,12 @@ private:
     uint32_t _trigger_id;	/* Module id (int) */
     uint8_t  _wtp[6];		/* EtherAddress */
     uint8_t  _hwaddr[6];	/* EtherAddress */
+    uint16_t _period;		/* Reporting period in ms (int) */
 public:
     uint32_t trigger_id() { return ntohl(_trigger_id); }
     EtherAddress wtp()    { return EtherAddress(_wtp); }
-    EtherAddress hwaddr()    { return EtherAddress(_hwaddr); }
+    EtherAddress hwaddr() { return EtherAddress(_hwaddr); }
+    uint16_t period()     { return ntohs(_period); }
 } CLICK_SIZE_PACKED_ATTRIBUTE;
 
 /* del DRP trigger packet format */

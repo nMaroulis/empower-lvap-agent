@@ -22,11 +22,24 @@
 #include "drp_trigger.hh"
 CLICK_DECLS
 
-DrpTrigger::DrpTrigger(EmpowerLVAPManager * el, EmpowerRXStats * ers) {
+DrpTrigger::DrpTrigger(EtherAddress eth, uint32_t trigger_id, uint16_t period, bool dispatched ,EmpowerLVAPManager * el,
+        EmpowerRXStats * ers) : Trigger(eth, trigger_id, period, el, ers), _dispatched(dispatched) , _val(11) {
 
 }
 
 DrpTrigger::~DrpTrigger() {
+}
+
+String RssiTrigger::unparse() {
+    StringAccum sa;
+    sa << Trigger::unparse();
+    sa << " addr ";
+    sa << _eth.unparse();
+    sa << " val " << _val;
+    if (_dispatched) {
+        sa << " dispatched";
+    }
+    return sa.take_string();
 }
 
 CLICK_ENDDECLS

@@ -64,12 +64,32 @@ void send_rssi_trigger_callback(Timer *timer, void *data) {
 	timer->schedule_after_msec(rssi->_period);
 }
 
+
+//------------------------------------- DRP STUFF -----------------------------------
 void send_drp_trigger_callback(Timer *timer, void *data) {
-    click_chatter("%{element} :: %s DRP TRIGGER CALLBACK", this, __func__);
-    DrpTrigger *drp = (DrpTrigger *) data;
-    drp->_el->send_drp_trigger(drp);
+	click_chatter("%{element} :: %s DRP TRIGGER CALLBACK", this, __func__);
+	DrpTrigger *drp = (DrpTrigger *) data;
+	drp->_ers->lock.acquire_read();
+	for (NTIter iter = rssi->_ers->stas.begin(); iter.live(); iter++) {
+		DstInfo *nfo = &iter.value();
+		drp->_el->send_drp_trigger(drp->_trigger_id,nfo->_iface_id);
+		drp->_dispatched = true;
+	}
+	drp->_ers->lock.release_read();
+	// re-schedule the timer
+	timer->schedule_after_msec(drp->_period);
 }
 
+void EmpowerRXStats::add_drp_trigger(EtherAddress eth, uint32_t trigger_id, uint16_t period) {
+	click_chatter("%{element} :: %s DRP TRIGGER ", this, __func__);
+	DrpTrigger * drp = new DrpTrigger(eth, trigger_id, period ,false , _el, this);
+	drp->_trigger_timer->assign(&send_drp_trigger_callback, (void *) drp);
+	drp->_trigger_timer->initialize(this);
+	drp->_trigger_timer->schedule_now();
+	_drp_triggers.push_back(drp);
+}
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 EmpowerRXStats::EmpowerRXStats() :
 		_el(0), _timer(this), _signal_offset(0), _period(1000),
 		_sma_period(13), _max_silent_window_count(10), _rssi_threshold(-70),
@@ -347,6 +367,11 @@ void EmpowerRXStats::clear_triggers() {
 		delete *qi;
 	}
 	_summary_triggers.clear();
+	//-----------  clear drp triggers -----------------
+	for (DRPIter qi = _drp_triggers.begin(); qi != _drp_triggers.end(); qi++) {
+		(*qi)->_trigger_timer->clear();
+	}
+	_drp_triggers.clear();
 }
 
 void EmpowerRXStats::add_summary_trigger(int iface, EtherAddress addr, uint32_t summary_id, int16_t limit, uint16_t period) {
@@ -437,7 +462,11 @@ String EmpowerRXStats::read_handler(Element *e, void *thunk) {
 		return sa.take_string();
 	}
     case H_DRP_TRIGGERS: {
-        StringAccum sa;
+		StringAccum sa;
+		for (DRPIter qi = td->_drp_triggers.begin(); qi != td->_drp_triggers.end(); qi++) {
+			sa << (*qi)->unparse() << "\n";
+		}
+		return sa.take_string();
     }
 	case H_LINKS: {
 		StringAccum sa;

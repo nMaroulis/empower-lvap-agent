@@ -337,7 +337,7 @@ void EmpowerLVAPManager::send_hello_loki() {
     checked_output_push(0, p);
 }
 
-void EmpowerLVAPManager::send_drp_trigger(uint32_t trigger_id, uint32_t iface, uint8_t current) {
+void EmpowerLVAPManager::send_drp_trigger(uint32_t trigger_id, uint32_t iface) {
 
     WritablePacket *p = Packet::make(sizeof(empower_drp_trigger));
     ResourceElement* re = iface_to_element(iface);
@@ -359,6 +359,7 @@ void EmpowerLVAPManager::send_drp_trigger(uint32_t trigger_id, uint32_t iface, u
 
 int EmpowerLVAPManager::handle_add_drp_trigger(Packet *p, uint32_t offset) {
     struct empower_add_drp_trigger *q = (struct empower_add_drp_trigger *) (p->data() + offset);
+	_ers->add_drp_trigger(q->wtp(), q->trigger_id(),q->period());
     if (_debug) { click_chatter("%{element} :: %s :: ADD DRP TRIGGER!", this, __func__); }
     return 0;
 }

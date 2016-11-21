@@ -285,12 +285,12 @@ public:
 	void send_txp_counters_response(uint32_t, EtherAddress, uint8_t, empower_bands_types, EtherAddress);
 	void send_img_response(int, uint32_t, EtherAddress, uint8_t, empower_bands_types);
 	void send_caps();
-	void send_rssi_trigger(uint32_t, uint32_t, uint8_t);
+	void send_rssi_trigger(uint32_t, uint32_t);
 	void send_summary_trigger(SummaryTrigger *);
 	void send_lvap_stats_response(EtherAddress, uint32_t);
     /*-----------------------  DRP STUFF ---------------------*/
 	void send_hello_loki();
-	void send_drp_trigger(uint32_t, uint32_t, uint8_t);
+	void send_drp_trigger(uint32_t, uint32_t);
 	void handle_add_drp_trigger(Packet *, uint32_t);
 	void handle_del_drp_trigger(Packet *, uint32_t);
 	/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
