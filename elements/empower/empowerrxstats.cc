@@ -67,10 +67,10 @@ void send_rssi_trigger_callback(Timer *timer, void *data) {
 
 //------------------------------------- DRP STUFF -----------------------------------
 void send_drp_trigger_callback(Timer *timer, void *data) {
-	click_chatter("%{element} :: %s DRP TRIGGER CALLBACK", this, __func__);
+	click_chatter("send_drp_trigger_callback :: %s DRP TRIGGER CALLBACK", __func__);
 	DrpTrigger *drp = (DrpTrigger *) data;
 	drp->_ers->lock.acquire_read();
-	for (NTIter iter = rssi->_ers->stas.begin(); iter.live(); iter++) {
+	for (NTIter iter = drp->_ers->stas.begin(); iter.live(); iter++) {
 		DstInfo *nfo = &iter.value();
 		drp->_el->send_drp_trigger(drp->_trigger_id,nfo->_iface_id);
 		drp->_dispatched = true;
@@ -81,7 +81,7 @@ void send_drp_trigger_callback(Timer *timer, void *data) {
 }
 
 void EmpowerRXStats::add_drp_trigger(EtherAddress eth, uint32_t trigger_id, uint16_t period) {
-	click_chatter("%{element} :: %s DRP TRIGGER ", this, __func__);
+	click_chatter("add_drp_trigger :: %s DRP TRIGGER ", __func__);
 	DrpTrigger * drp = new DrpTrigger(eth, trigger_id, period ,false , _el, this);
 	drp->_trigger_timer->assign(&send_drp_trigger_callback, (void *) drp);
 	drp->_trigger_timer->initialize(this);
@@ -525,7 +525,7 @@ void EmpowerRXStats::add_handlers() {
 	add_read_handler("signal_offset", read_handler, (void *) H_SIGNAL_OFFSET);
 	add_write_handler("signal_offset", write_handler, (void *) H_SIGNAL_OFFSET);
 	add_write_handler("debug", write_handler, (void *) H_DEBUG);
-    add_write_handler("drp_triggers",read_handler,(void*)H_DRP_TRIGGERS);
+    add_read_handler("drp_triggers",read_handler,(void*)H_DRP_TRIGGERS);    //DRP Stuff
 }
 
 EXPORT_ELEMENT(EmpowerRXStats)
