@@ -1,18 +1,5 @@
 /*
- * rssi_trigger.{cc,hh}
- * Roberto Riggio
- *
- * Copyright (c) 2009 CREATE-NET
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, subject to the conditions
- * listed in the Click LICENSE file. These conditions include: you must
- * preserve this copyright notice, and you cannot mention the copyright
- * holders in advertising related to the Software without their permission.
- * The Software is provided WITHOUT ANY WARRANTY, EXPRESS OR IMPLIED. This
- * notice is a summary of the Click LICENSE file; the license in that file is
- * legally binding.
+
  */
 
 #include <click/config.h>
@@ -30,7 +17,7 @@ DrpTrigger::DrpTrigger(EtherAddress eth, uint32_t trigger_id, uint16_t period, b
 DrpTrigger::~DrpTrigger() {
 }
 
-String RssiTrigger::unparse() {
+String DrpTrigger::unparse() {
     StringAccum sa;
     sa << Trigger::unparse();
     sa << " addr ";
