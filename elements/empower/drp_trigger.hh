@@ -11,9 +11,9 @@ CLICK_DECLS
 
 class DrpTrigger: public Trigger {
 public:
-
-    int _val;
+    
     bool _dispatched;
+    int _val;
 
     DrpTrigger(EtherAddress, uint32_t, uint16_t ,char * ,bool ,  EmpowerLVAPManager *,EmpowerRXStats *);
     ~DrpTrigger();
