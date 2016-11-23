@@ -341,6 +341,9 @@ void EmpowerLVAPManager::send_drp_trigger(uint32_t trigger_id, uint32_t iface) {
 
     WritablePacket *p = Packet::make(sizeof(empower_drp_trigger));
     ResourceElement* re = iface_to_element(iface);
+    /* debug */
+    if (_debug) { click_chatter("DRP :: %{element} :: %s", this, __func__); }
+    /* - - - */
     if (!p) { click_chatter("%{element} :: %s :: cannot make DRP packet!", this, __func__);return; }
     memset(p->data(), 0, p->length());
     empower_drp_trigger*request = (struct empower_drp_trigger *) (p->data());
@@ -352,21 +355,25 @@ void EmpowerLVAPManager::send_drp_trigger(uint32_t trigger_id, uint32_t iface) {
     request->set_wtp(_wtp);
     request->set_channel(re->_channel);
     request->set_band(re->_band);
-    request->set_hwaddr(re->_hwaddr);
+    //request->set_hwaddr(re->_hwaddr);
 
     output(0).push(p);
 }
 
 int EmpowerLVAPManager::handle_add_drp_trigger(Packet *p, uint32_t offset) {
     struct empower_add_drp_trigger *q = (struct empower_add_drp_trigger *) (p->data() + offset);
-	_ers->add_drp_trigger(q->wtp(), q->trigger_id(),q->period());
-    if (_debug) { click_chatter("%{element} :: %s :: ADD DRP TRIGGER!", this, __func__); }
+	_ers->add_drp_trigger(q->wtp(), q->trigger_id(),q->period(),q->get_rule());
+    /* debug */
+    if (_debug) { click_chatter("DRP :: %{element} :: %s", this, __func__); }
+    /* - - - */
     return 0;
 }
 
 int EmpowerLVAPManager::handle_del_drp_trigger(Packet *p, uint32_t offset) {
     struct empower_del_drp_trigger *q = (struct empower_del_drp_trigger *) (p->data() + offset);
-    if (_debug) { click_chatter("%{element} :: %s :: DEL DRP TRIGGER!", this, __func__); }
+    /* debug */
+    if (_debug) { click_chatter("DRP :: %{element} :: %s", this, __func__); }
+    /* - - - */
     return 0;
 }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/

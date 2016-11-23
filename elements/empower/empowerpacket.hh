@@ -638,15 +638,15 @@ struct empower_drp_trigger: public empower_header {
 private:
     uint32_t _trigger_id; 	/* Module id (int) */
     uint8_t  _wtp[6];		/* EtherAddress */
-    uint8_t  _hwaddr[6];	/* EtherAddress */
     uint8_t  _channel;		/* WiFi channel (int) */
     uint8_t  _band;			/* WiFi band (empower_band_types) */
+    //uint8_t  _hwaddr[6];	/* EtherAddress */
 public:
     void set_wtp(EtherAddress wtp)          { memcpy(_wtp, wtp.data(), 6); }
     void set_band(uint8_t band)             { _band = band; }
     void set_channel(uint8_t channel)       { _channel = channel; }
-    void set_hwaddr(EtherAddress hwaddr)    { memcpy(_hwaddr, hwaddr.data(), 6); }
     void set_trigger_id(int32_t trigger_id) { _trigger_id = htonl(trigger_id); }
+    // void set_hwaddr(EtherAddress hwaddr)    { memcpy(_hwaddr, hwaddr.data(), 6); }
 } CLICK_SIZE_PACKED_ATTRIBUTE;
 
 /* add DRP trigger packet format */
@@ -654,13 +654,16 @@ struct empower_add_drp_trigger: public empower_header {
 private:
     uint32_t _trigger_id;	/* Module id (int) */
     uint8_t  _wtp[6];		/* EtherAddress */
-    uint8_t  _hwaddr[6];	/* EtherAddress */
+    //uint8_t  _hwaddr[6];	/* EtherAddress */
     uint16_t _period;		/* Reporting period in ms (int) */
+    char    _rule[];			/* SSID (String) */
 public:
     uint32_t trigger_id() { return ntohl(_trigger_id); }
     EtherAddress wtp()    { return EtherAddress(_wtp); }
-    EtherAddress hwaddr() { return EtherAddress(_hwaddr); }
+    //EtherAddress hwaddr() { return EtherAddress(_hwaddr); }
     uint16_t period()     { return ntohs(_period); }
+    char * get_rule() { return _rule;
+    }
 } CLICK_SIZE_PACKED_ATTRIBUTE;
 
 /* del DRP trigger packet format */

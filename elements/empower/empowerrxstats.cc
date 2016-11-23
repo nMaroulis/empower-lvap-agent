@@ -67,7 +67,9 @@ void send_rssi_trigger_callback(Timer *timer, void *data) {
 
 //------------------------------------- DRP STUFF -----------------------------------
 void send_drp_trigger_callback(Timer *timer, void *data) {
-	click_chatter("send_drp_trigger_callback :: %s DRP TRIGGER CALLBACK", __func__);
+    /* debug */
+    if (_debug) { click_chatter("DRP :: empowerrxstats.cc :: %s", __func__); }
+    /* - - - */
 	DrpTrigger *drp = (DrpTrigger *) data;
 	drp->_ers->lock.acquire_read();
 	for (NTIter iter = drp->_ers->stas.begin(); iter.live(); iter++) {
@@ -80,9 +82,11 @@ void send_drp_trigger_callback(Timer *timer, void *data) {
 	timer->schedule_after_msec(drp->_period);
 }
 
-void EmpowerRXStats::add_drp_trigger(EtherAddress eth, uint32_t trigger_id, uint16_t period) {
-	click_chatter("add_drp_trigger :: %s DRP TRIGGER ", __func__);
-	DrpTrigger * drp = new DrpTrigger(eth, trigger_id, period ,false , _el, this);
+void EmpowerRXStats::add_drp_trigger(EtherAddress eth, uint32_t trigger_id, uint16_t period, char * rule) {
+    /* debug */
+    if (_debug) { click_chatter("DRP :: empowerrxstats.cc :: %s", __func__); }
+    /* - - - */
+	DrpTrigger * drp = new DrpTrigger(eth, trigger_id, period , rule, false , _el, this);
 	drp->_trigger_timer->assign(&send_drp_trigger_callback, (void *) drp);
 	drp->_trigger_timer->initialize(this);
 	drp->_trigger_timer->schedule_now();
