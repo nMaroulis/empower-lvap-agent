@@ -74,9 +74,7 @@ void send_drp_trigger_callback(Timer *timer, void *data) {
 	drp->_ers->lock.acquire_read();
 	for (NTIter iter = drp->_ers->stas.begin(); iter.live(); iter++) {
 		DstInfo *nfo = &iter.value();
-        if (nfo->_eth != drp->_eth) {
-            continue;
-        }
+        if (nfo->_eth != drp->_eth) { continue; }
         if(!drp->_dispatched) {
             drp->_el->send_drp_trigger(drp->_trigger_id, nfo->_iface_id);
             drp->_dispatched = true;
@@ -87,13 +85,12 @@ void send_drp_trigger_callback(Timer *timer, void *data) {
         }
 	}
 	drp->_ers->lock.release_read();
-	// re-schedule the timer
-	timer->schedule_after_msec(drp->_period);
+	timer->schedule_after_msec(drp->_period);// re-schedule the timer
 }
 
 void EmpowerRXStats::add_drp_trigger(EtherAddress eth, uint32_t trigger_id, uint16_t period, char * rule) {
     /* debug */
-    click_chatter("DRP :: empowerrxstats.cc :: %s", __func__);
+    click_chatter("DRP :: empowerrxstats.cc :: %s (str: %s)", __func__, rule);
     /* - - - */
     DrpTrigger * drp = new DrpTrigger(eth, trigger_id, period , rule, false , _el, this);
     for (DRPIter qi = _drp_triggers.begin(); qi != _drp_triggers.end(); qi++) {
@@ -110,6 +107,17 @@ void EmpowerRXStats::add_drp_trigger(EtherAddress eth, uint32_t trigger_id, uint
 	drp->_trigger_timer->initialize(this);
 	drp->_trigger_timer->schedule_now();
 	_drp_triggers.push_back(drp);
+}
+
+void EmpowerRXStats::del_drp_trigger(uint32_t drp_id) {
+    for (DRPIter qi = _drp_triggers.begin(); qi != _drp_triggers.end(); qi++) {
+        if ((*qi)->_trigger_id == drp_id) {
+            (*qi)->_trigger_timer->clear();
+            _drp_triggers.erase(qi);
+            delete *qi;
+            break;
+        }
+    }
 }
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

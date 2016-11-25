@@ -93,6 +93,7 @@ public:
 
 	/*----------- DRP ----------*/
 	void add_drp_trigger(EtherAddress,uint32_t,uint16_t,char *);
+    void del_drp_trigger(uint32_t);
 	/*- - - - - - - - - - - - - */
 	void clear_triggers();
 

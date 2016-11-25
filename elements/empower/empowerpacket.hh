@@ -662,8 +662,7 @@ public:
     EtherAddress wtp()    { return EtherAddress(_wtp); }
     //EtherAddress hwaddr() { return EtherAddress(_hwaddr); }
     uint16_t period()     { return ntohs(_period); }
-    char * get_rule() { return _rule;
-    }
+    char * get_rule() { return _rule; }
 } CLICK_SIZE_PACKED_ATTRIBUTE;
 
 /* del DRP trigger packet format */
