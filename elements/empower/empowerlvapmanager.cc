@@ -344,7 +344,7 @@ void EmpowerLVAPManager::send_drp_trigger(uint32_t trigger_id, uint32_t iface) {
     /* debug */
     if (_debug) { click_chatter("DRP :: %{element} :: %s", this, __func__); }
     /* - - - */
-    if (!p) { click_chatter("%{element} :: %s :: cannot make DRP packet!", this, __func__);return; }
+    if (!p) { click_chatter("DRP %{element} :: %s :: cannot make DRP packet!", this, __func__);return; }
     memset(p->data(), 0, p->length());
     empower_drp_trigger*request = (struct empower_drp_trigger *) (p->data());
     request->set_version(_empower_version);
@@ -362,7 +362,7 @@ void EmpowerLVAPManager::send_drp_trigger(uint32_t trigger_id, uint32_t iface) {
 
 int EmpowerLVAPManager::handle_add_drp_trigger(Packet *p, uint32_t offset) {
     struct empower_add_drp_trigger *q = (struct empower_add_drp_trigger *) (p->data() + offset);
-	_ers->add_drp_trigger(q->wtp(), q->trigger_id(),q->period(),q->hwaddr());
+	_ers->add_drp_trigger(q->wtp(), q->trigger_id(),q->period());
     /* debug */
     if (_debug) { click_chatter("DRP :: %{element} :: %s", this, __func__); }
     /* - - - */

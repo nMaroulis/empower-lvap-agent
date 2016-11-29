@@ -91,7 +91,7 @@ void send_drp_trigger_callback(Timer *timer, void *data) {
 	timer->schedule_after_msec(drp->_period);// re-schedule the timer
 }
 
-void EmpowerRXStats::add_drp_trigger(EtherAddress eth, uint32_t trigger_id, uint16_t period, EtherAddress addr) {
+void EmpowerRXStats::add_drp_trigger(EtherAddress eth, uint32_t trigger_id, uint16_t period) {
     /* debug */
     click_chatter("DRP :: empowerrxstats.cc :: %s (str: )", __func__);
     /* - - - */
