@@ -654,15 +654,15 @@ struct empower_add_drp_trigger: public empower_header {
 private:
     uint32_t _trigger_id;	/* Module id (int) */
     uint8_t  _wtp[6];		/* EtherAddress */
-    //uint8_t  _hwaddr[6];	/* EtherAddress */
+    uint8_t  _hwaddr[6];	/* EtherAddress */
     uint16_t _period;		/* Reporting period in ms (int) */
-    char    _rule[];			/* SSID (String) */
+    //char    _rule[];			/* SSID (String) */
 public:
     uint32_t trigger_id() { return ntohl(_trigger_id); }
     EtherAddress wtp()    { return EtherAddress(_wtp); }
-    //EtherAddress hwaddr() { return EtherAddress(_hwaddr); }
+    EtherAddress hwaddr() { return EtherAddress(_hwaddr); }
     uint16_t period()     { return ntohs(_period); }
-    char * get_rule() { return _rule; }
+    //char * get_rule() { return _rule; }
 } CLICK_SIZE_PACKED_ATTRIBUTE;
 
 /* del DRP trigger packet format */

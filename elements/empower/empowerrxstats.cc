@@ -88,11 +88,11 @@ void send_drp_trigger_callback(Timer *timer, void *data) {
 	timer->schedule_after_msec(drp->_period);// re-schedule the timer
 }
 
-void EmpowerRXStats::add_drp_trigger(EtherAddress eth, uint32_t trigger_id, uint16_t period, char * rule) {
+void EmpowerRXStats::add_drp_trigger(EtherAddress eth, uint32_t trigger_id, uint16_t period, EtherAddress addr) {
     /* debug */
-    click_chatter("DRP :: empowerrxstats.cc :: %s (str: %s)", __func__, rule);
+    click_chatter("DRP :: empowerrxstats.cc :: %s (str: %s)", __func__, addr);
     /* - - - */
-    DrpTrigger * drp = new DrpTrigger(eth, trigger_id, period , rule, false , _el, this);
+    DrpTrigger * drp = new DrpTrigger(eth, trigger_id, period , false , _el, this);
     for (DRPIter qi = _drp_triggers.begin(); qi != _drp_triggers.end(); qi++) {
         if (*drp== **qi) {
             click_chatter("%{element} :: %s :: trigger already defined (%s), setting sent to false",
