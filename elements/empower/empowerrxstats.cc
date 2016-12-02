@@ -75,12 +75,8 @@ void send_drp_trigger_callback(Timer *timer, void *data) {
 	for (NTIter iter = drp->_ers->stas.begin(); iter.live(); iter++) {
 		DstInfo *nfo = &iter.value();
         //if (nfo->_eth != drp->_eth) { continue; }
-        //else{
-        //    drp->_dispatched = false;
-        //}
         if(!drp->_dispatched) {
-            click_chatter("DRP :: empowerrxstats.cc :: %s , dispached %d  {nfo_iface %d}", __func__, drp->_dispatched,
-                          nfo->_iface_id);
+            click_chatter("DRP :: %s :: GOT { %s }", __func__,drp->_rule);
             drp->_el->send_drp_trigger(drp->_trigger_id, nfo->_iface_id);
             drp->_dispatched = true;
         }
@@ -89,11 +85,11 @@ void send_drp_trigger_callback(Timer *timer, void *data) {
 	timer->schedule_after_msec(drp->_period);// re-schedule the timer
 }
 
-void EmpowerRXStats::add_drp_trigger(EtherAddress eth, uint32_t trigger_id, uint16_t period) {
+void EmpowerRXStats::add_drp_trigger(EtherAddress eth, uint32_t trigger_id, uint16_t period, String rule) {
     /* debug */
     click_chatter("DRP :: empowerrxstats.cc :: %s (str: )", __func__);
     /* - - - */
-    DrpTrigger * drp = new DrpTrigger(eth, trigger_id, period , false , _el, this);
+    DrpTrigger * drp = new DrpTrigger(eth, trigger_id, period , rule,false , _el, this);
     for (DRPIter qi = _drp_triggers.begin(); qi != _drp_triggers.end(); qi++) {
         if (*drp== **qi) {
             click_chatter("%{element} :: %s :: trigger already defined (%s), setting sent to false",

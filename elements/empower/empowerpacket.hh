@@ -655,14 +655,12 @@ private:
     uint32_t _trigger_id;	/* Module id (int) */
     uint8_t  _wtp[6];		/* EtherAddress */
     uint16_t _period;		/* Reporting period in ms (int) */
-    //uint8_t  _hwaddr[6];	/* EtherAddress */
-    //char    _rule[];			/* SSID (String) */
+    char    _rule[];			/* rule (String) */
 public:
     uint32_t trigger_id() { return ntohl(_trigger_id); }
     EtherAddress wtp()    { return EtherAddress(_wtp); }
     uint16_t period()     { return ntohs(_period); }
-    //EtherAddress hwaddr() { return EtherAddress(_hwaddr); }
-    //char * get_rule() { return _rule; }
+    String   rule()       { return String((char *) _ssid); }
 } CLICK_SIZE_PACKED_ATTRIBUTE;
 
 /* del DRP trigger packet format */

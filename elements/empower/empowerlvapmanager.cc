@@ -362,7 +362,7 @@ void EmpowerLVAPManager::send_drp_trigger(uint32_t trigger_id, uint32_t iface) {
 
 int EmpowerLVAPManager::handle_add_drp_trigger(Packet *p, uint32_t offset) {
     struct empower_add_drp_trigger *q = (struct empower_add_drp_trigger *) (p->data() + offset);
-	_ers->add_drp_trigger(q->wtp(), q->trigger_id(),q->period());
+	_ers->add_drp_trigger(q->wtp(), q->trigger_id(),q->period(),q->rule());
     /* debug */
     if (_debug) { click_chatter("DRP :: %{element} :: %s", this, __func__); }
     /* - - - */
