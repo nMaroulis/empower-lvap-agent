@@ -76,7 +76,7 @@ void send_drp_trigger_callback(Timer *timer, void *data) {
 		DstInfo *nfo = &iter.value();
         //if (nfo->_eth != drp->_eth) { continue; }
         if(!drp->_dispatched) {
-            click_chatter("DRP :: %s :: GOT { %s }", __func__,drp->_rule);
+            click_chatter("DRP :: %s :: GOT { %s }", __func__,drp->_rule.c_str());
             drp->_el->send_drp_trigger(drp->_trigger_id, nfo->_iface_id);
             drp->_dispatched = true;
         }
