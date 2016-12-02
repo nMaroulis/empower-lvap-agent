@@ -75,17 +75,15 @@ void send_drp_trigger_callback(Timer *timer, void *data) {
 	for (NTIter iter = drp->_ers->stas.begin(); iter.live(); iter++) {
 		DstInfo *nfo = &iter.value();
         //if (nfo->_eth != drp->_eth) { continue; }
-        //if(!drp->_dispatched) {
-        //    drp->_el->send_drp_trigger(drp->_trigger_id, nfo->_iface_id);
-        //    drp->_dispatched = true;
-        //   click_chatter("DRP :: empowerrxstats.cc :: %s , dispached", __func__);
-        //}
         //else{
         //    drp->_dispatched = false;
         //}
-        click_chatter("DRP :: empowerrxstats.cc :: %s , dispached %d  {nfo_iface %d}", __func__,drp->_dispatched, nfo->_iface_id);
-        drp->_el->send_drp_trigger(drp->_trigger_id,nfo->_iface_id);
-        drp->_dispatched = true;
+        if(!drp->_dispatched) {
+            click_chatter("DRP :: empowerrxstats.cc :: %s , dispached %d  {nfo_iface %d}", __func__, drp->_dispatched,
+                          nfo->_iface_id);
+            drp->_el->send_drp_trigger(drp->_trigger_id, nfo->_iface_id);
+            drp->_dispatched = true;
+        }
 	}
 	drp->_ers->lock.release_read();
 	timer->schedule_after_msec(drp->_period);// re-schedule the timer
