@@ -660,7 +660,7 @@ public:
     uint32_t trigger_id() { return ntohl(_trigger_id); }
     EtherAddress wtp()    { return EtherAddress(_wtp); }
     uint16_t period()     { return ntohs(_period); }
-    String   rule()       { return String((char *) _ssid); }
+    String   rule()       { return String((char *) _rule); }
 } CLICK_SIZE_PACKED_ATTRIBUTE;
 
 /* del DRP trigger packet format */
