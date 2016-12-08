@@ -653,14 +653,17 @@ public:
 struct empower_add_drp_trigger: public empower_header {
 private:
     uint32_t _trigger_id;	/* Module id (int) */
-    uint8_t  _wtp[6];		/* EtherAddress */
     uint16_t _period;		/* Reporting period in ms (int) */
-    char    _rule[];			/* rule (String) */
+    uint8_t  _slvap[6];		/* EtherAddress */
+    uint8_t  _dlvap[6];		/* EtherAddress */
+    char    _rtype[];			/* type (String) */
+
 public:
     uint32_t trigger_id() { return ntohl(_trigger_id); }
-    EtherAddress wtp()    { return EtherAddress(_wtp); }
     uint16_t period()     { return ntohs(_period); }
-    String   rule()       { return String((char *) _rule); }
+    EtherAddress slvap()    { return EtherAddress(_slvap); }
+    EtherAddress dlvap()    { return EtherAddress(_dlvap); }
+    String   rtype()       { return String((char *) _rtype); }
 } CLICK_SIZE_PACKED_ATTRIBUTE;
 
 /* del DRP trigger packet format */

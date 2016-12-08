@@ -7,8 +7,8 @@
 #include "drp_trigger.hh"
 CLICK_DECLS
 
-DrpTrigger::DrpTrigger(EtherAddress eth, uint32_t trigger_id, uint16_t period,String rule, bool dispatched ,EmpowerLVAPManager * el,
-        EmpowerRXStats * ers) : Trigger(eth, trigger_id, period, el, ers), _dispatched(dispatched) , _val(11),_rule(rule) {
+DrpTrigger::DrpTrigger(EtherAddress eth1,EtherAddress eth2, uint32_t trigger_id, uint16_t period,String rule, bool dispatched ,EmpowerLVAPManager * el,
+        EmpowerRXStats * ers) : Trigger(eth1, trigger_id, period, el, ers), _dispatched(dispatched) , _val(11),_rule(rule) {
 }
 
 DrpTrigger::~DrpTrigger() {

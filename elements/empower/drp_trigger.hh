@@ -16,7 +16,7 @@ public:
     int _val;
     String _rule;
 
-    DrpTrigger(EtherAddress, uint32_t, uint16_t, String,bool, EmpowerLVAPManager *, EmpowerRXStats *);
+    DrpTrigger(EtherAddress, EtherAddress, uint32_t, uint16_t, String,bool, EmpowerLVAPManager *, EmpowerRXStats *);
     ~DrpTrigger();
     String unparse();
     inline bool operator==(const DrpTrigger &b) {
