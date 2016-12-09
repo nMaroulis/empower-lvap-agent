@@ -12,7 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="928e4e1f-bafa-402a-993a-444faa8e66f7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elements/empower/empowerlvapmanager.cc" afterPath="$PROJECT_DIR$/elements/empower/empowerlvapmanager.cc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elements/empower/empowerrxstats.cc" afterPath="$PROJECT_DIR$/elements/empower/empowerrxstats.cc" />
     </list>
     <ignored path="empower-lvap-agent.iws" />
@@ -36,7 +36,7 @@
       <file leaf-file-name="empowerpacket.hh" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/elements/empower/empowerpacket.hh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1422">
+            <state relative-caret-position="342">
               <caret line="659" column="0" selection-start-line="659" selection-start-column="0" selection-end-line="659" selection-end-column="0" />
               <folding />
             </state>
@@ -46,11 +46,21 @@
       <file leaf-file-name="empowerrxstats.cc" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/elements/empower/empowerrxstats.cc">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="78" column="38" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="38" />
+            <state relative-caret-position="81">
+              <caret line="83" column="69" selection-start-line="83" selection-start-column="69" selection-end-line="83" selection-end-column="69" />
               <folding>
                 <element signature="e#0#768#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="empowerlvapmanager.cc" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/elements/empower/empowerlvapmanager.cc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="282">
+              <caret line="373" column="43" selection-start-line="373" selection-start-column="43" selection-end-line="373" selection-end-column="43" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -60,16 +70,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="18">
               <caret line="299" column="34" selection-start-line="299" selection-start-column="34" selection-end-line="299" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="empowerrxstats.hh" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/elements/empower/empowerrxstats.hh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="603">
-              <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -109,10 +109,10 @@
         <option value="$PROJECT_DIR$/elements/empower/empowerlvapmanager.hh" />
         <option value="$PROJECT_DIR$/elements/empower/empowerbeaconsource.cc" />
         <option value="$PROJECT_DIR$/elements/empower/empowerpacket.hh" />
-        <option value="$PROJECT_DIR$/elements/empower/empowerlvapmanager.cc" />
         <option value="$PROJECT_DIR$/elements/empower/empowerrxstats.hh" />
         <option value="$PROJECT_DIR$/elements/empower/drp_trigger.hh" />
         <option value="$PROJECT_DIR$/elements/empower/drp_trigger.cc" />
+        <option value="$PROJECT_DIR$/elements/empower/empowerlvapmanager.cc" />
         <option value="$PROJECT_DIR$/elements/empower/empowerrxstats.cc" />
       </list>
     </option>
@@ -125,10 +125,10 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1493" />
-    <option name="y" value="156" />
-    <option name="width" value="1313" />
-    <option name="height" value="744" />
+    <option name="x" value="53" />
+    <option name="y" value="24" />
+    <option name="width" value="1387" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -513,18 +513,18 @@
       <workItem from="1481207099688" duration="3025000" />
       <workItem from="1481236454943" duration="16000" />
       <workItem from="1481289004593" duration="2014000" />
-      <workItem from="1481291614882" duration="1558000" />
+      <workItem from="1481291614882" duration="3462000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75254000" />
+    <option name="totallyTimeSpent" value="77158000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1493" y="156" width="1313" height="744" extended-state="6" />
+    <frame x="53" y="24" width="1387" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25818735" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2444124" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -917,26 +917,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/elements/empower/empowerrxstats.hh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/elements/empower/empowerlvapmanager.cc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-576">
-          <caret line="375" column="15" selection-start-line="375" selection-start-column="15" selection-end-line="375" selection-end-column="15" />
+        <state relative-caret-position="282">
+          <caret line="373" column="43" selection-start-line="373" selection-start-column="43" selection-end-line="373" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/elements/empower/empowerpacket.hh">
+    <entry file="file://$PROJECT_DIR$/elements/empower/empowerrxstats.hh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1422">
-          <caret line="659" column="0" selection-start-line="659" selection-start-column="0" selection-end-line="659" selection-end-column="0" />
+        <state relative-caret-position="495">
+          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -949,10 +941,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/elements/empower/empowerpacket.hh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="659" column="0" selection-start-line="659" selection-start-column="0" selection-end-line="659" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/elements/empower/empowerrxstats.cc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="78" column="38" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="38" />
+        <state relative-caret-position="81">
+          <caret line="83" column="69" selection-start-line="83" selection-start-column="69" selection-end-line="83" selection-end-column="69" />
           <folding>
             <element signature="e#0#768#0" expanded="false" />
           </folding>

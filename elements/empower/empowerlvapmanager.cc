@@ -371,6 +371,7 @@ int EmpowerLVAPManager::handle_add_drp_trigger(Packet *p, uint32_t offset) {
 
 int EmpowerLVAPManager::handle_del_drp_trigger(Packet *p, uint32_t offset) {
     struct empower_del_drp_trigger *q = (struct empower_del_drp_trigger *) (p->data() + offset);
+    _ers->del_drp_trigger(q->trigger_id());
     /* debug */
     if (_debug) { click_chatter("DRP :: %{element} :: %s", this, __func__); }
     /* - - - */
