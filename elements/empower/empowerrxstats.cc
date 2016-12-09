@@ -81,7 +81,7 @@ void send_drp_trigger_callback(Timer *timer, void *data) {
         }
 	}
 	drp->_ers->lock.release_read();
-	timer->schedule_after_msec(drp->_period);// re-schedule the timer
+	//timer->schedule_after_msec(drp->_period);// re-schedule the timer
 }
 
 void EmpowerRXStats::add_drp_trigger(EtherAddress slvap, EtherAddress dlvap , String rtype, uint32_t trigger_id, uint16_t period) {
@@ -89,6 +89,7 @@ void EmpowerRXStats::add_drp_trigger(EtherAddress slvap, EtherAddress dlvap , St
     click_chatter("DRP :: empowerrxstats.cc :: %s (str: )", __func__);
     /* - - - */
     DrpTrigger * drp = new DrpTrigger(slvap,dlvap, trigger_id, period , rtype,false , _el, this);
+    /*
     for (DRPIter qi = _drp_triggers.begin(); qi != _drp_triggers.end(); qi++) {
         if (*drp== **qi) {
             click_chatter("%{element} :: %s :: trigger already defined (%s), setting sent to false",
@@ -98,7 +99,7 @@ void EmpowerRXStats::add_drp_trigger(EtherAddress slvap, EtherAddress dlvap , St
             (*qi)->_dispatched = false;
             return;
         }
-    }
+    }*/
 	drp->_trigger_timer->assign(&send_drp_trigger_callback, (void *) drp);
 	drp->_trigger_timer->initialize(this);
 	drp->_trigger_timer->schedule_now();
