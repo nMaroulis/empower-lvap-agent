@@ -14,13 +14,15 @@ public:
     
     bool _dispatched;
     int _val;
+    EtherAddress _eth1;
+    EtherAddress _eth2;
     String _rule;
 
     DrpTrigger(EtherAddress, EtherAddress, uint32_t, uint16_t, String,bool, EmpowerLVAPManager *, EmpowerRXStats *);
     ~DrpTrigger();
     String unparse();
     inline bool operator==(const DrpTrigger &b) {
-        return  (_eth == b._eth) && (_val == b._val);
+        return  (_eth1 == b._eth1) && (_eth2  == b._eth2) && (_rule  == b._rule);
     }
 
 };
