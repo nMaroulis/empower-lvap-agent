@@ -179,6 +179,11 @@ typedef LVAP::iterator LVAPIter;
 typedef HashTable<int, NetworkPort> Ports;
 typedef Ports::iterator PortsIter;
 
+/* -------------  DRP Flow ------------ */
+typedef HashTable<EtherAddress, EtherAddress> LFlowTable;
+typedef LFlowTable::iterator LFlowTableIter;
+/* - - - - - - - - - - - - - - - - - -  */
+
 class ResourceElement {
 public:
 
@@ -289,10 +294,13 @@ public:
 	void send_summary_trigger(SummaryTrigger *);
 	void send_lvap_stats_response(EtherAddress, uint32_t);
     /*-----------------------  DRP STUFF ---------------------*/
-	void send_hello_loki();
+	void send_hello_loki();  // TEMP
+	bool add_flow(EtherAddress src, EtherAddress dst);
+    bool remove_flow(EtherAddress src, EtherAddress dst);
 	void send_drp_trigger(uint32_t, uint32_t);
 	int handle_add_drp_trigger(Packet *, uint32_t);
 	int handle_del_drp_trigger(Packet *, uint32_t);
+	LFlowTable* lflowTable() {return &lflowtable; }
 	/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 	EtherAddress wtp() { return _wtp; }
 	EtherAddress empower_hwaddr() { return _empower_hwaddr; }
@@ -346,7 +354,7 @@ private:
 	EtherAddress _wtp;
 	unsigned int _period; // msecs
 	bool _debug;
-
+    LFlowTable lflowtable; // DRP
 	static int write_handler(const String &, Element *, void *, ErrorHandler *);
 	static String read_handler(Element *, void *);
 

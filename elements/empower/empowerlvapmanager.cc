@@ -312,7 +312,7 @@ void EmpowerLVAPManager::send_hello() {
 }
 
 /*------------------------------------------------  DRP STUFF ------------------------------------------------*/
-void EmpowerLVAPManager::send_hello_loki() {
+void EmpowerLVAPManager::send_hello_loki() {  // TEMP
     WritablePacket *p = Packet::make(sizeof(empower_hello_loki));
     if (!p) {
         click_chatter("%{element} :: %s :: cannot make hello_loki packet!",
@@ -335,6 +335,28 @@ void EmpowerLVAPManager::send_hello_loki() {
                       hello_l->seq());
     }
     checked_output_push(0, p);
+}
+
+bool EmpowerLVAPManager::remove_flow(EtherAddress src,EtherAddress dst){
+
+    lflowtable.erase(lflowtable.find(src));
+    return true;
+}
+
+
+bool EmpowerLVAPManager::add_flow(EtherAddress src,EtherAddress dst){
+    click_chatter("DRP flow :: trying to add flow");
+	if (lflowtable.find(src)) {
+        click_chatter("DRP flow :: Entry with key %s already exists", src.unparse().c_str());
+        return false;
+    }
+	else {
+        click_chatter("DRP flow :: adding src:%s dst:%s",src.unparse().c_str(),dst.unparse().c_str());
+        if(lflowtable.set(src, dst)
+        	return true;
+        else
+        	return false;
+    }
 }
 
 void EmpowerLVAPManager::send_drp_trigger(uint32_t trigger_id, uint32_t iface) {
@@ -366,6 +388,13 @@ int EmpowerLVAPManager::handle_add_drp_trigger(Packet *p, uint32_t offset) {
     /* debug */
     if (_debug) { click_chatter("DRP :: %{element} :: %s", this, __func__); }
     /* - - - */
+    EtherAddress src = q->slvap();
+    EtherAddress dst = q->dlvap();
+    if(add_flow(src,dst)) // adding flow
+    	click_chatter("DRP flow :: Setting src:%s dst:%s, succesful.",src.unparse().c_str(),dst.unparse().c_str());
+    else
+    	click_chatter("DRP flow :: Setting src:%s dst:%s, failed.",src.unparse().c_str(),dst.unparse().c_str());
+
     return 0;
 }
 
