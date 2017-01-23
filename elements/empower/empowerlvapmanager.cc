@@ -352,7 +352,7 @@ bool EmpowerLVAPManager::add_flow(EtherAddress src,EtherAddress dst){
     }
 	else {
         click_chatter("DRP flow :: adding src:%s dst:%s",src.unparse().c_str(),dst.unparse().c_str());
-        if(lflowtable.set(src, dst)
+        if(lflowtable.set(src, dst))
         	return true;
         else
         	return false;
@@ -377,19 +377,20 @@ void EmpowerLVAPManager::send_drp_trigger(uint32_t trigger_id, uint32_t iface) {
     request->set_wtp(_wtp);
     request->set_channel(re->_channel);
     request->set_band(re->_band);
-    //request->set_hwaddr(re->_hwaddr);
+    //request->set_flow_response(af);
 
     output(0).push(p);
 }
 
 int EmpowerLVAPManager::handle_add_drp_trigger(Packet *p, uint32_t offset) {
     struct empower_add_drp_trigger *q = (struct empower_add_drp_trigger *) (p->data() + offset);
-	_ers->add_drp_trigger(q->slvap(),q->dlvap() ,q->rtype(), q->trigger_id(),q->period());
+	_ers->add_drp_trigger(q->slvap(),q->dlvap() ,q->rtype(), q->trigger_id(),q->period(),af);
     /* debug */
     if (_debug) { click_chatter("DRP :: %{element} :: %s", this, __func__); }
     /* - - - */
     EtherAddress src = q->slvap();
     EtherAddress dst = q->dlvap();
+
     if(add_flow(src,dst)) // adding flow
     	click_chatter("DRP flow :: Setting src:%s dst:%s, succesful.",src.unparse().c_str(),dst.unparse().c_str());
     else
