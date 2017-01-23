@@ -13319,20 +13319,6 @@ fi
 done
 
 
-if test -z "$GMAKE"; then
-    as_fn_error $? "
-==============================================
-
-Can't find GNU make.  Either put 'gmake' on your PATH and
-rerun './configure', or set the GMAKE environment variable to
-GNU make's pathname.
-
-==============================================" "$LINENO" 5
-fi
-
-
-
-
 
 for t in $DRIVERS $OTHER_TARGETS; do
     INSTALL_TARGETS="$INSTALL_TARGETS install-$t"
