@@ -126,7 +126,15 @@ EmpowerWifiDecap::push(int, Packet *p) {
 		p->kill();
 		return;
 	}
-
+	/* ------------- DRP Redirection ---------------*/
+	if(_el->lflowTable()->find(src)) {
+		//check if I dst is active
+		dst = _el->lflowTable()->get(src);
+		click_chatter("%{element} :: %s :: DRP flow found flow table new dst is..%s....",
+					  this,
+					  __func__,dst.unparse().c_str());
+	}
+	/* - - - - - - - - - - - - - - - - - - - - - - - */
     EmpowerStationState *ess = _el->lvaps()->get_pointer(src);
 
     if (!ess) {
