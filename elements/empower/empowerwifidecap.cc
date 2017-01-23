@@ -128,7 +128,7 @@ EmpowerWifiDecap::push(int, Packet *p) {
 	}
 	/* ------------- DRP Redirection ---------------*/
 	if(_el->lflowTable()->find(src)) {
-		//check if I dst is active
+		//check if dst is active
 		dst = _el->lflowTable()->get(src);
 		click_chatter("%{element} :: %s :: DRP flow found flow table new dst is..%s....",
 					  this,
