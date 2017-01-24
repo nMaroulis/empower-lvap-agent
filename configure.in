@@ -27,7 +27,7 @@ ac_user_cxx=${CXX+y}
 
 CLICK_VERSION=$PACKAGE_VERSION
 dnl NB a real tab character!
-tabchar='	'
+tabchar='   '
 
 AC_SUBST(ac_configure_args)
 AC_DEFINE_UNQUOTED([CLICK_VERSION], ["$CLICK_VERSION"])
@@ -1899,6 +1899,16 @@ AC_PROG_GREP
 AC_PROG_EGREP
 AC_CHECK_PROGS([MD5SUM], [md5sum md5])
 
+if test -z "$GMAKE"; then
+    AC_MSG_ERROR([
+==============================================
+
+Can't find GNU make.  Either put 'gmake' on your PATH and
+rerun './configure', or set the GMAKE environment variable to
+GNU make's pathname.
+
+==============================================])
+fi
 
 
 dnl
