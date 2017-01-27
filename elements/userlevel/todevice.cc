@@ -293,9 +293,10 @@ ToDevice::cleanup(CleanupStage)
 int
 ToDevice::send_packet(Packet *p)
 {
+    EtherAddress(eps->_packet->ether_header()->ether_shost).unparse().c_str()
     int r = 0;
     errno = 0;
-
+    click_chatter("todevice :: s{%s, %s} , d{%s, %s}",EtherAddress(p->ether_header()->ether_shost).unparse().c_str(),IPAddress(p->ip_header()->ip_src).unparse().c_str(),EtherAddress(eps->_packet->ether_header()->ether_dhost).unparse().c_str(),IPAddress(p->ip_header()->ip_dst).unparse().c_str());
 #if TODEVICE_ALLOW_NETMAP
     if (_method == method_netmap) {
 	if (_netmap.send_packet(p, noutputs())) { // fail

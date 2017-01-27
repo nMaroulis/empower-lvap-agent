@@ -66,8 +66,8 @@ EmpowerWifiEncap::push(int, Packet *p) {
 
 	EtherAddress src = EtherAddress(eh->ether_shost);
 	EtherAddress dst = EtherAddress(eh->ether_dhost);
-	click_chatter("DRP flow encap test 1 src:%s, dst%s",
-				  src.unparse().c_str(),dst.unparse().c_str());
+	click_chatter("%{element} :: DRP flow INPUT src:%s, dst%s",
+                  this,src.unparse().c_str(),dst.unparse().c_str());
 	// unicast traffic
 	if (!dst.is_broadcast() && !dst.is_group()) {
         EmpowerStationState *ess = _el->lvaps()->get_pointer(dst);
@@ -255,8 +255,8 @@ EmpowerWifiEncap::wifi_encap(Packet *q, EtherAddress dst, EtherAddress src, Ethe
 		p_out->kill();
 		return 0;
 	}
-	click_chatter("DRP flow encap test 2 src:%s, dst%s",
-				  src.unparse().c_str(),dst.unparse().c_str());
+	click_chatter("%{element} :: DRP flow OUTPUT src:%s, dst%s",
+                  this,src.unparse().c_str(),dst.unparse().c_str());
 	return p_out;
 
 }

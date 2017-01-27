@@ -126,12 +126,12 @@ EmpowerWifiDecap::push(int, Packet *p) {
 		p->kill();
 		return;
 	}
-    click_chatter("DRP flow test {before change} src:%s, dst:%s",
-                  src.unparse().c_str(),dst.unparse().c_str());
-	/* ------------- DRP Redirection ---------------*/
+    /* ------------- DRP Redirection ---------------*/
+    click_chatter("%{element} :: DRP flow {before change} src:%s, dst:%s",
+                  this,src.unparse().c_str(),dst.unparse().c_str());
 	if(_el->lflowTable()->find(src) != _el->lflowTable()->end()) { //check if src exists in flowtable
 		dst = _el->lflowTable()->get(src);
-		click_chatter("%{element} :: %s :: DRP flow found flow table new dst is..%s....",
+		click_chatter("%{element} :: %s :: DRP flow table new dst is %s.",
 					  this,
 					  __func__,dst.unparse().c_str());
 	}
@@ -189,8 +189,6 @@ EmpowerWifiDecap::push(int, Packet *p) {
 		if (!_no_stats) {
 			ess->update_rx(p_out->length());
 		}
-        click_chatter("DRP flow test 1 src:%s, dst:%s",
-                      src.unparse().c_str(),dst.unparse().c_str());
 
 		if (Packet *clone = p->clone())
 			output(1).push(clone);
@@ -225,8 +223,6 @@ EmpowerWifiDecap::push(int, Packet *p) {
 	if (!_no_stats) {
 		ess->update_rx(p_out->length());
 	}
-    click_chatter("DRP flow test 2 src:%s, dst:%s",
-                  src.unparse().c_str(),dst.unparse().c_str());
 	if (Packet *clone = p->clone())
 		output(1).push(clone);
 

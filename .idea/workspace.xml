@@ -15,6 +15,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elements/empower/empowerwifidecap.cc" afterPath="$PROJECT_DIR$/elements/empower/empowerwifidecap.cc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elements/empower/empowerwifiencap.cc" afterPath="$PROJECT_DIR$/elements/empower/empowerwifiencap.cc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elements/userlevel/todevice.cc" afterPath="$PROJECT_DIR$/elements/userlevel/todevice.cc" />
     </list>
     <ignored path="empower-lvap-agent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,29 +39,41 @@
       <file leaf-file-name="empowerwifidecap.cc" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/elements/empower/empowerwifidecap.cc">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1458">
-              <caret line="128" column="61" lean-forward="false" selection-start-line="128" selection-start-column="61" selection-end-line="128" selection-end-column="61" />
+            <state relative-caret-position="380">
+              <caret line="133" column="74" lean-forward="true" selection-start-line="133" selection-start-column="74" selection-end-line="133" selection-end-column="74" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="empowerwifiencap.cc" pinned="false" current-in-tab="true">
+      <file leaf-file-name="empowerwifiencap.cc" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/elements/empower/empowerwifiencap.cc">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="256" column="5" lean-forward="true" selection-start-line="256" selection-start-column="5" selection-end-line="256" selection-end-column="5" />
+            <state relative-caret-position="290">
+              <caret line="68" column="41" lean-forward="false" selection-start-line="68" selection-start-column="41" selection-end-line="68" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="empowerlvapmanager.cc" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/elements/empower/empowerlvapmanager.cc">
+      <file leaf-file-name="empowerbeaconsource.cc" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/elements/empower/empowerbeaconsource.cc">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="339" column="56" lean-forward="false" selection-start-line="339" selection-start-column="56" selection-end-line="339" selection-end-column="56" />
+            <state relative-caret-position="648">
+              <caret line="124" column="0" lean-forward="true" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="todevice.cc" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/elements/userlevel/todevice.cc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="292" column="3" lean-forward="true" selection-start-line="292" selection-start-column="3" selection-end-line="292" selection-end-column="3" />
+              <folding>
+                <element signature="e#8185#8328#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -73,6 +86,7 @@
       <find>bool</find>
       <find>dst</find>
       <find>endd</find>
+      <find>drp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -92,8 +106,9 @@
         <option value="$PROJECT_DIR$/elements/empower/empowerrxstats.cc" />
         <option value="$PROJECT_DIR$/elements/empower/empowerrxstats.hh" />
         <option value="$PROJECT_DIR$/elements/empower/empowerlvapmanager.cc" />
-        <option value="$PROJECT_DIR$/elements/empower/empowerwifidecap.cc" />
         <option value="$PROJECT_DIR$/elements/empower/empowerwifiencap.cc" />
+        <option value="$PROJECT_DIR$/elements/empower/empowerwifidecap.cc" />
+        <option value="$PROJECT_DIR$/elements/userlevel/todevice.cc" />
       </list>
     </option>
   </component>
@@ -105,9 +120,8 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-4" />
-    <option name="width" value="1928" />
-    <option name="height" value="1032" />
+    <option name="width" value="1920" />
+    <option name="height" value="1028" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -160,38 +174,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="empower-lvap-agent" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="empower-lvap-agent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="click" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="empower-lvap-agent" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="empower-lvap-agent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="elements" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -210,7 +192,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="userlevel" />
+              <option name="myItemId" value="lvnfs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -228,25 +210,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ip" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="empower-lvap-agent" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="empower-lvap-agent" />
+              <option name="myItemId" value="lvnfs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="elements" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="empower" />
+              <option name="myItemId" value="examples" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -259,9 +227,22 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/stathis/Desktop/empower-lvap-agent/elements/empower/empoweropenauthresponder.cc&#10;hello&#9;null&#9;null" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="nodejs_interpreter_path" value="/usr/bin/node" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS_2="true" PROJECT_NAME="empower_lvap_agent" TARGET_NAME="empower_lvap_agent" CONFIG_NAME="Debug" TEST_MODE="SUITE_TEST">
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="empower_lvap_agent" TARGET_NAME="empower_lvap_agent" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
       <envs />
       <method />
     </configuration>
@@ -487,21 +468,23 @@
       <workItem from="1485167496339" duration="1415000" />
       <workItem from="1485172987240" duration="1090000" />
       <workItem from="1485188855657" duration="266000" />
-      <workItem from="1485267971906" duration="2644000" />
+      <workItem from="1485267971906" duration="2870000" />
+      <workItem from="1485515457055" duration="4927000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84608000" />
+    <option name="totallyTimeSpent" value="89761000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="0" width="1928" height="1032" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1028" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2140625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -513,7 +496,6 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -554,46 +536,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/include/click/standard/alignmentinfo.hh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/click/standard/errorelement.hh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/click/standard/portinfo.hh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-615">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/click/standard/scheduleinfo.hh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/click/standard/threadsched.hh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/click/standard/storage.hh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -783,13 +730,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/elements/empower/empowerbeaconsource.cc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5202">
-          <caret line="289" column="0" lean-forward="false" selection-start-line="289" selection-start-column="0" selection-end-line="290" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/elements/empower/trigger.cc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -850,7 +790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="522">
           <caret line="29" column="28" lean-forward="false" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -858,7 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1512">
           <caret line="243" column="1" lean-forward="true" selection-start-line="243" selection-start-column="1" selection-end-line="243" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -866,7 +804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
           <caret line="101" column="21" lean-forward="true" selection-start-line="101" selection-start-column="21" selection-end-line="101" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -898,6 +835,61 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="864">
           <caret line="94" column="75" lean-forward="false" selection-start-line="94" selection-start-column="75" selection-end-line="94" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elements/app/ftpportmapper.cc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1170">
+          <caret line="69" column="0" lean-forward="true" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elements/lvnfs/examples/scyllawifiduperfilter.click">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elements/lvnfs/scyllawifidupefilter.cc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="49" column="20" lean-forward="false" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elements/empower/empowerwifiencap.cc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="68" column="41" lean-forward="false" selection-start-line="68" selection-start-column="41" selection-end-line="68" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elements/empower/empowerwifidecap.cc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="133" column="74" lean-forward="true" selection-start-line="133" selection-start-column="74" selection-end-line="133" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elements/empower/empowerbeaconsource.cc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="124" column="0" lean-forward="true" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elements/lvnfs/scyllawifidupefilter.hh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="102" column="5" lean-forward="true" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -910,19 +902,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/elements/empower/empowerwifidecap.cc">
+    <entry file="file://$PROJECT_DIR$/elements/userlevel/todevice.cc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1458">
-          <caret line="128" column="61" lean-forward="false" selection-start-line="128" selection-start-column="61" selection-end-line="128" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/elements/empower/empowerwifiencap.cc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="256" column="5" lean-forward="true" selection-start-line="256" selection-start-column="5" selection-end-line="256" selection-end-column="5" />
-          <folding />
+        <state relative-caret-position="144">
+          <caret line="292" column="3" lean-forward="true" selection-start-line="292" selection-start-column="3" selection-end-line="292" selection-end-column="3" />
+          <folding>
+            <element signature="e#8185#8328#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
